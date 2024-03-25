@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MOOD</title>
+        <link rel="stylesheet" href="/stylesheets/day3.css">
+    </head>
+    
+    <body>
+        <div class="page">
+            <div class="head">
+                <h1>하루 한 줄 기분 적기</h1>
+            </div>
+            <div class="main">
+                <form action="/day3/submit" method="post">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+    
+                    <label for="category">지금 내 감정</label>
+                    <select id="category" name="category" required>
+                        <option value="">(감정)</option>
+                        <option value="기쁨">기쁨</option>
+                        <option value="슬픔">슬픔</option>
+                        <option value="분노">분노</option>
+                        <option value="두려움">두려움</option>
+                        <option value="창피">창피</option>
+                    </select>
+                    <br>
+    
+                    <label for="details">설명</label>
+                    <input type="text" id="details" name="details">
+                    <br>
+    
+                    <button type="submit">추가하기</button>
+                </form>
+                <div class="result">
+                    <div class="row header">
+                        <div class="cell">작성자</div>
+                        <div class="cell">감정</div>
+                        <div class="cell">설명</div>
+                        <div class="cell">작성날짜</div>
+                    </div>
+                    <% for(let i=0; i < userData.length; i++) { %>
+                        <div class="row">
+                            <div class="cell details">
+                                <%= userData[i].name %>
+                            </div>
+                            <div class="cell">
+                                <%= userData[i].category %>
+                            </div>
+                            <div class="cell details">
+                                <%= userData[i].details %>
+                            </div>
+                            <div class="cell">
+                                <%= userData[i].submittedDate %>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
